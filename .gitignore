@@ -1,0 +1,41 @@
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
+# Geospatial / large data (never commit rasters or intermediate products)
+*.tif
+*.tiff
+*.tif.aux.xml
+*.img
+*.vrt
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.parquet
+*.nc
+*.hdf
+
+# Large tabular intermediates
+*.xlsx
+*.zip
+
+# Rendered outputs
+*.gif
+*.mp4
+figures_out/
+outputs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,21 @@
+# Environment for CONUS forest edge dynamics analysis
+# Verified on Windows 10, Python 3.10.11
+#
+# NOTE: numpy is pinned to 1.25.x on purpose. numpy 2.x breaks
+# matplotlib / pandas / scipy / cartopy in this stack.
+name: conus-edge
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.11
+  - numpy=1.25.2
+  - pandas=1.5.1
+  - scipy=1.9.3
+  - matplotlib=3.6.2
+  - rasterio=1.4.4
+  - geopandas=0.12.1
+  - openpyxl=3.1.5
+  - jupyterlab
+  - pip
+  - pip:
+      - pymannkendall==1.4.3
