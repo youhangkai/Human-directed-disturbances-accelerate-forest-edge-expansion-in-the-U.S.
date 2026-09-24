@@ -5,7 +5,7 @@ Analysis code for:
 > **Human-directed disturbances accelerate forest edge expansion in the U.S.**
 > Hangkai You, Min Chen\*, Zhe Zhu, Shi Qiu, Ian G. Brosnan, Ramakrishna Nemani, Volker Radeloff, Ming Liu, Taejin Park\*
 
-This repository contains **only the code used to produce the results, figures and supplementary material of the manuscript.** Exploratory and unrelated notebooks are not included (see [What was excluded](#what-was-excluded)). Notebook outputs are stripped; all code is retained.
+This repository contains **only the code used to produce the results, figures and supplementary material of the manuscript.** Notebook outputs are stripped; all code is retained.
 
 This repository was organized by Claude Code and checked manually by the authors.
 
@@ -122,23 +122,6 @@ conda activate conus-edge
 Then edit the input paths at the top of each script or notebook and run `00`–`09` in order.
 
 `numpy` is pinned to 1.25.2 deliberately; 2.x breaks matplotlib/pandas/scipy/cartopy in this stack.
-
----
-
-## What was excluded
-
-Removed from this branch because it does not contribute to the manuscript:
-
-- `NLM simulation.ipynb` — neutral landscape model; no such analysis appears in the manuscript
-- `Playground.ipynb`, `Untitled.ipynb` — scratch
-- `Edge analysis stats single year.ipynb` — single-year prototype, superseded by the 1988–2021 series
-- `Analyze the driver of the forest edge dynamics.ipynb` — machine-learning driver models, not used
-- `Log edge length vs log edge area.ipynb` — exploratory
-- FINESST 2025 and NSF CAREER figure notebooks — different proposals
-- County-scale visualisations of area, interior rate and edge density — the manuscript reports Census regions
-- 225 PNG/GIF renders, slide decks, and toy test rasters (`mock_forest.tif`, `classified_forest.tif`)
-
-A note on repository history: the manuscript pipeline previously lived in a separate private repository and was referenced from `main` as a `Summer Intern` submodule with no `.gitmodules` entry, so it cloned as an empty directory. That broken reference is removed here and the code is committed directly.
 
 ---
 
