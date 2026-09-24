@@ -5,8 +5,6 @@ Analysis code for:
 > **Human-directed disturbances accelerate forest edge expansion in the U.S.**
 > Hangkai You, Min Chen\*, Zhe Zhu, Shi Qiu, Ian G. Brosnan, Ramakrishna Nemani, Volker Radeloff, Ming Liu, Taejin Park\*
 
-This repository contains **only the code used to produce the results, figures and supplementary material of the manuscript.** Notebook outputs are stripped; all code is retained.
-
 This repository was organized by Claude Code and checked manually by the authors.
 
 ---
