@@ -63,7 +63,7 @@ where class 5 is interior forest (depth > 120 m), classes 1–4 are exterior for
 1. within the spatial unit, sum pixels → `frag_y`, `loss_y` for each year;
 2. annual ratio `EFCR_y = frag_y / loss_y`;
 3. reported mean = temporal mean of `EFCR_y` over 1988–2020 (n = 33);
-4. Trend estimated by linear regression on year with AR(p) errors (p = 0–3 selected by AIC; Ljung–Box residual check, all p > 0.05), reported as the coefficient with its 95% CI. Mann–Kendall and Theil–Sen were replaced because they overstate significance in temporally autocorrelated series (Ives et al. 2021); see `08_uncertainty_and_revision/mannkendall_vs_AR1_simulation.py` for the calibrated false-positive simulation.
+4. Trend estimated by linear regression on year with **AR(1) errors**, reported as the coefficient with its 95% CI. All fitted series pass a Ljung–Box residual check (p > 0.05), confirming a first-order specification is sufficient; `08_uncertainty_and_revision/ar_order_sensitivity.py` shows results are unchanged when higher orders are allowed. Mann–Kendall and Theil–Sen were replaced because they overstate significance in temporally autocorrelated series (Ives et al. 2021); see `08_uncertainty_and_revision/mannkendall_vs_AR1_simulation.py` for the calibrated false-positive simulation.
 
 Only step 1 changes between CONUS and a region. This makes EFCR **area-weighted by forest loss** (the denominator of the ratio), so regions contribute in proportion to their forest loss. Do not average regional EFCR values unweighted: that over-weights regions with negligible disturbance area.
 
@@ -85,8 +85,9 @@ Design-based (bias-adjusted) area estimation and the revision analyses.
 | `area_edge_trends.py` | Theil–Sen slopes and Mann–Kendall p for area and edge, by region. **Superseded** by the AR analyses below; retained only for the MK-vs-AR comparison |
 | `efcr_regional_trends.py` | Regional and CONUS EFCR annual series (Mann–Kendall version; superseded, retained for comparison) |
 | `efcr_annual_by_disturbance_extract.py` | Extracts the national annual EFCR series for each disturbance agent from the attribution table |
-| `efcr_AR_trends_all_series.py` | AR(p)-error regression trends for all EFCR series (regional, national, by disturbance; 1988–2021 and 2001–2021), with residual diagnostics |
-| `edge_acceleration_AR_increments.py` | Acceleration γ from the annual-increment model ΔE_t = α + γt + ε_t with AR(p) errors; Newey–West and quadratic-fit cross-checks |
+| `ar1_uniform_fits.py` | **Primary trend analysis.** Regression with AR(1) errors for every EFCR series (region × disturbance, national by disturbance, regional aggregates for 1988–2021 and 2001–2021) and for the edge and area accelerations. Produces Table S2 and the Figure 3b statistics |
+| `ar_order_sensitivity.py` | Shows conclusions are unchanged when the autoregressive order is selected by AIC or AICc over wider candidate sets |
+| `edge_acceleration_AR_increments.py` | Cross-checks on the acceleration γ: Newey–West heteroskedasticity- and autocorrelation-consistent standard errors, and the equivalent quadratic-on-levels parameterisation |
 | `stock_series_differencing_check.py` | ADF unit-root tests and first-difference diagnostics showing why area and edge *levels* are not trend-tested |
 | `mannkendall_vs_AR1_simulation.py` | MK vs OLS vs AR(1) on every series, plus the zero-trend false-positive simulation calibrated to the observed autocorrelation |
 
@@ -102,8 +103,7 @@ Main figures 1–3 and supplementary figures S1–S5, plus the revision figures.
 | `Figure 1.ipynb` … `Figure S5.ipynb` | Manuscript figures |
 | `figure3_pooled_efcr_compute.py` | Panel (a) data: area-weighted (pooled) mean EFCR by disturbance type |
 | `figure3b_extract_region_x_disturbance_efcr.py` | Panel (b) input: annual EFCR series for each region × disturbance combination (32 series) |
-| `figure3b_AR_trend_fits.py` | Panel (b) statistics: AR(p)-error trend, 95% CI and p for each of the 32 series, plus national and regional aggregates |
-| `figure3_AR_plot.py` | **Figure 3 as published.** Panel (a) unchanged; panel (b) plots mean EFCR against the AR-regression trend, filled markers p ≤ 0.05 |
+| `figure3_AR1_plot.py` | **Figure 3 as published.** Panel (a) mean EFCR; panel (b) plots mean EFCR against the AR(1) trend from `08_uncertainty_and_revision/ar1_uniform_fits.py`, filled markers p ≤ 0.05 |
 | `figure_efcr_region_vs_conus.py` | Regional vs CONUS EFCR comparison |
 | `figure_loss_gain_net_bars.py` / `_annual.py` | Loss / gain / net flux by agent |
 | `figure_biasadj_total_flux.py` | Total flux, map vs bias-adjusted |

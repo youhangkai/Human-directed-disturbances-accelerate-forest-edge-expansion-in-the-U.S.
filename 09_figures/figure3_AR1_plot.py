@@ -5,7 +5,7 @@ from matplotlib.lines import Line2D
 NV=r"C:/Users/hyou34/OneDrive - UW-Madison/manuscripts/paper/CONUS Forest Landscape Dynamics Attribution/Nature version"
 SUB=NV+"/Statistical_Revision_AR"
 A=pd.read_csv(NV+"/Fig3a_pooled_EFCR_by_disturbance.csv")                 # panel (a): UNCHANGED
-R=pd.read_csv(SUB+"/AR_trend_results_all_series.csv")
+R=pd.read_csv(SUB+"/AR1_uniform_results.csv")
 B=R[(R.level=="region x disturbance")&R.slope.notna()].copy()             # panel (b): AR-based
 B=B[B.Disturbance!="No Disturbance"]                                       # same 8 agents as the published panel
 
@@ -44,6 +44,6 @@ l2=ax2.legend(handles=h_dis,title="Disturbance",loc="upper left",bbox_to_anchor=
 l3=ax2.legend(handles=h_sig,title="Trend significance",loc="upper left",bbox_to_anchor=(1.02,0.24),fontsize=8.5,title_fontsize=9,frameon=False)
 ax2.add_artist(l1); ax2.add_artist(l2)
 plt.tight_layout(rect=[0,0,0.86,1])
-plt.savefig(SUB+"/Figure_3_AR.png",dpi=250,bbox_inches="tight"); print("saved Figure_3_AR.png")
-B.sort_values(["Disturbance","Region"])[["Region","Disturbance","n","mean","slope","se","lo","hi","p","ar","lb"]].to_csv(SUB+"/Figure_3b_AR_points.csv",index=False)
+plt.savefig(SUB+"/Figure_3_AR1.png",dpi=250,bbox_inches="tight"); print("saved Figure_3_AR1.png")
+B.sort_values(["Disturbance","Region"])[["Region","Disturbance","n","mean","slope","se","lo","hi","p","phi","lb"]].to_csv(SUB+"/Figure_3b_AR1_points.csv",index=False)
 print("saved Figure_3b_AR_points.csv (%d points)"%len(B))
